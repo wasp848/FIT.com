@@ -25,7 +25,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <a class="navbar-brand" href="index.jsp"><img height="100" src="Assets/Images/fitlogo2.png"></a>
+             <a class="navbar-brand" href="index.jsp"><img class="headerimg" height="100px" src="Assets/Images/fitlogo2.png"></a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
@@ -196,7 +196,7 @@
                             <input name="command" type="hidden" value="ADDC">
                             <input name="prodID" type="hidden" value="${requestScope.products[index].getProductID()}">
                             <input name="url" type="hidden" value="shopall.jsp">
-                            <table class="newitemstable adminitems" id="getallitemstable">
+                            <table class="newitemstable" id="getallitemstable">
                             <td>
                                 <div class="card mb-2 product shopallproduct">
                                     <div class="newitemimgdiv">
@@ -295,8 +295,8 @@
         
             
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <img height="75" src="Assets/Images/fitlogo2.png">
-             <p class="h6 footertext"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright © 2020 <i>FIT.com</i>. All rights reserved.</strong><br>Isurupaya, Battaramulla - Pannipitiya Rd, Battaramulla 10120</p>
+             <img class="footerimg" height="75px" src="Assets/Images/fitlogo2.png">
+             <p class="h6 footertext"><strong>Copyright © 2020 <i>FIT.com</i>. All rights reserved.</strong></p>
         </nav>
     </body>
 </html>

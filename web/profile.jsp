@@ -142,7 +142,7 @@
         
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <a class="navbar-brand" href="index.jsp"><img height="100" src="Assets/Images/fitlogo2.png"></a>
+             <a class="navbar-brand" href="index.jsp"><img class="headerimg" height="100px" src="Assets/Images/fitlogo2.png"></a>
              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">

@@ -12,25 +12,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FIT.com - Home</title>
         <script src="Styling/jquery.min.js"></script>
-        <script src="Styling/mdb.js"></script>
-        <link rel="stylesheet" href="Styling/mdb.css">
         <script src="Styling/bootstrap.min.js"></script>
         <link rel="stylesheet" href="Styling/bootstrap.min.css">
         <link rel="icon" type="image/ico" href="Assets/Images/fitlogo.png" />
     </head>
     <body>
-        <div style="background-color: #333333;">
+        <div style="background-color: #333333;display: flex;align-items: center;justify-content: center;">
             <c:if test="${empty requestScope.registermessage}">
-                <label style="color: #ff0b0b;font-weight: bold;margin-left: 700px;">${requestScope.loginmessage}</label>
+                <label style="color: #ff0b0b;font-weight: bold;">${requestScope.loginmessage}</label>
             </c:if>
             <c:if test="${not empty requestScope.registermessage}">
-                <label style="color: #ff0b0b;font-weight: bold;margin-left: 600px;">${requestScope.registermessage}</label>
+                <label style="color: #ff0b0b;font-weight: bold;">${requestScope.registermessage}</label>
             </c:if>
         </div>
         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <a class="navbar-brand" href="index.jsp"><img height="100" src="Assets/Images/fitlogo2.png"></a>
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+             <a class="navbar-brand" href="index.jsp"><img class="headerimg" height="100px" src="Assets/Images/fitlogo2.png"></a>
+             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+             
              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
@@ -144,7 +145,6 @@
                 <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
                  <div class="carousel-item active">
@@ -159,11 +159,6 @@
                           <a href="CustomerProduct"><p class="slide2cap">VISIT OUR STORE</p></a>
                       </div>
                   </div>
-                    <div class="carousel-item">
-                          <img class="homecr slide3" src="Assets/Images/slide3.png" alt="Third slide">
-                          <p class="slide3ctxt1">MEET THE NEWEST MEMBER OF OUR <p class="slide3ctxt2">FIT</p><p class="slide3ctxt3">TEAM</p>
-                          <a href="phil.jsp"><p class="slide3cap">LEARN MORE</p></a>
-                  </div>
             </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -173,87 +168,227 @@
                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
                   <span class="sr-only">Next</span>
                 </a>
+            </div>
+            
+            <div id="carouselExampleIndicators3" class="carousel slidemobile" data-ride="carousel">
+                <div class="carousel-inner">
+                 <div class="carousel-item active">
+                     <img class="homecr slide1" src="Assets/Images/slide11.png" alt="First slide">
+                     <div class="captn slide1c">
+                         <a href="routines.jsp"><p class="slide1cap">VIEW ROUTINES</p></a>
+                      </div>
+                 </div>
+                   <div class="carousel-item">
+                      <img class="homecr slide2" src="Assets/Images/slide2.png" alt="Second slide">
+                      <div class="captn slide2c">
+                          <a href="CustomerProduct"><p class="slide2cap">VISIT OUR STORE</p></a>
+                      </div>
+                  </div>
+            </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
             </div><br><br><br>
             
             <div class="newitems">
                 <p class="newinhead">NEW IN</p>
-                <table class="newitemstable">
-                    <tr>
+                <div class="homeallitems">
+                    <table class="newitemstable homeitems" id="getallitemstable">
                         <td>
-                            <div class="card mb-2 product">
+                            <div class="card mb-2 product shopallproduct homeproducts">
                                 <div class="newitemimgdiv">
-                                    <img class="newitemimg" src="Assets/Images/prejym.jpg" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                   <div class="itemdescr">Pre JYM Pre Workout<br>(Cherry Limeade, 30 servs)</div></a><p>JYM</p>
-                                  <p class="newitemprice">LKR 7500</p>
-                                </div>
+                                        <img class="newitemimg" src="Assets/Images/prejym.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                       <div class="itemdescr">Pre JYM Pre Workout<br>(Cherry Limeade, 30 servs)</div></a><p>JYM</p>
+                                      <p class="newitemprice">LKR 7500</p>
+                                    </div>
                               </div>
                         </td>
+                    </table>
+                    <table class="newitemstable homeitems" id="getallitemstable">
                         <td>
-                            <div class="card mb-2 product">
+                            <div class="card mb-2 product shopallproduct homeproducts">
                                 <div class="newitemimgdiv">
-                                    <img class="newitemimg" src="Assets/Images/mtcreatine.jpg" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <div class="itemdescr">Platinum Creatine<br>(80 servs)</div><p>Muscletech</p>
-                                  <p class="newitemprice">LKR 4000</p>
-                                </div>
+                                        <img class="newitemimg" src="Assets/Images/mtcreatine.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="itemdescr">Platinum Creatine<br>(80 servs)</div><p>Muscletech</p>
+                                      <p class="newitemprice">LKR 4000</p>
+                                    </div>
                               </div>
                         </td>
+                    </table>
+                    <table class="newitemstable homeitems" id="getallitemstable">
                         <td>
-                            <div class="card mb-2 product">
+                            <div class="card mb-2 product shopallproduct homeproducts">
                                 <div class="newitemimgdiv">
-                                    <img class="newitemimg" src="Assets/Images/syntha6.jpg" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <div class="itemdescr">Syntha-6 Whey Protein<br>(Chocolate Peanut Butter, 48 servs)</div><p>BSN</p>
-                                  <p class="newitemprice">LKR 10000</p>
-                                </div>
+                                        <img class="newitemimg" src="Assets/Images/syntha6.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="itemdescr">Syntha-6 Whey Protein<br>(Chocolate Peanut Butter, 48 servs)</div><p>BSN</p>
+                                      <p class="newitemprice">LKR 10000</p>
+                                    </div>
                               </div>
                         </td>
+                    </table>
+                    <table class="newitemstable homeitems" id="getallitemstable">
                         <td>
-                            <div class="card mb-2 product">
+                            <div class="card mb-2 product shopallproduct homeproducts">
                                 <div class="newitemimgdiv">
-                                    <img class="newitemimg" src="Assets/Images/evlbcaa.jpg" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <div class="itemdescr">BCAA Energy<br>(Cherry Limeade, 30 servs)</div><p>Evolution Nutrition</p>
-                                    <p class="newitemprice">LKR 4500</p>
-                                </div>
+                                        <img class="newitemimg" src="Assets/Images/evlbcaa.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="itemdescr">BCAA Energy<br>(Cherry Limeade, 30 servs)</div><p>Evolution Nutrition</p>
+                                        <p class="newitemprice">LKR 4500</p>
+                                    </div>
                               </div>
                         </td>
+                    </table>
+                    <table class="newitemstable homeitems" id="getallitemstable">
                         <td>
-                            <div class="card mb-2 product">
+                            <div class="card mb-2 product shopallproduct homeproducts">
                                 <div class="newitemimgdiv">
-                                    <img class="newitemimg" src="Assets/Images/dymatizewp.jpg" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <div class="itemdescr">ISO100 Hydrolyzed Whey Protein<br>(Chocolate Coconut, 72 servs)</div><p>Dymatize</p>
-                                  <p class="newitemprice">LKR 15500</p>
-                                </div>
-                                </div>
-                        </td>
-                        <td>
-                            <div class="card mb-2 product">
-                                <div class="newitemimgdiv">
-                                    <img class="newitemimg" src="Assets/Images/nitrox.jpg" alt="Card image cap">
-                                </div>
-                                <div class="card-body">
-                                    <div class="itemdescr">Mr. Hyde NitroX<br>(Blue Razz Popsicle, 30 servs)</div><p>Pro Supps</p>
-                                  <p class="newitemprice">LKR 6500</p>
-                                </div>
+                                        <img class="newitemimg" src="Assets/Images/dymatizewp.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="itemdescr">ISO100 Hydrolyzed Whey Protein<br>(Chocolate Coconut, 72 servs)</div><p>Dymatize</p>
+                                      <p class="newitemprice">LKR 15500</p>
+                                    </div>
                               </div>
                         </td>
-                    </tr>
-                </table>
-                <a class="gotostore" href="CustomerProduct">GO TO STORE</a>
+                    </table>
+                    <table class="newitemstable homeitems" id="getallitemstable">
+                        <td>
+                            <div class="card mb-2 product shopallproduct homeproducts">
+                                <div class="newitemimgdiv">
+                                        <img class="newitemimg" src="Assets/Images/nitrox.jpg" alt="Card image cap">
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="itemdescr">Mr. Hyde NitroX<br>(Blue Razz Popsicle, 30 servs)</div><p>Pro Supps</p>
+                                      <p class="newitemprice">LKR 6500</p>
+                                    </div>
+                              </div>
+                        </td>
+                    </table>
+                </div>
+                
+                <div id="carouselExampleIndicators2" class="carousel newin" data-ride="false">
+                    <div class="carousel-inner homecarouselinner">
+                        <div class="carousel-item homecarouselitem active">
+                            <table class="newitemstable homeitems" id="getallitemstable">
+                                <td>
+                                    <div class="card mb-2 product shopallproduct homeproducts">
+                                        <div class="newitemimgdiv">
+                                                <img class="newitemimg" src="Assets/Images/prejym.jpg" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body">
+                                               <div class="itemdescr">Pre JYM Pre Workout<br>(Cherry Limeade, 30 servs)</div></a><p>JYM</p>
+                                              <p class="newitemprice">LKR 7500</p>
+                                            </div>
+                                      </div>
+                                </td>
+                            </table>
+                        </div>
+                        <div class="carousel-item homecarouselitem">
+                           <table class="newitemstable homeitems" id="getallitemstable">
+                                <td>
+                                    <div class="card mb-2 product shopallproduct homeproducts">
+                                        <div class="newitemimgdiv">
+                                                <img class="newitemimg" src="Assets/Images/mtcreatine.jpg" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="itemdescr">Platinum Creatine<br>(80 servs)</div><p>Muscletech</p>
+                                              <p class="newitemprice">LKR 4000</p>
+                                            </div>
+                                      </div>
+                                </td>
+                            </table>
+                       </div>
+                        <div class="carousel-item homecarouselitem">
+                            <table class="newitemstable homeitems" id="getallitemstable">
+                                <td>
+                                    <div class="card mb-2 product shopallproduct homeproducts">
+                                        <div class="newitemimgdiv">
+                                                <img class="newitemimg" src="Assets/Images/syntha6.jpg" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="itemdescr">Syntha-6 Whey Protein<br>(Chocolate Peanut Butter, 48 servs)</div><p>BSN</p>
+                                              <p class="newitemprice">LKR 10000</p>
+                                            </div>
+                                      </div>
+                                </td>
+                            </table>
+                        </div>
+                        <div class="carousel-item homecarouselitem">
+                            <table class="newitemstable homeitems" id="getallitemstable">
+                                <td>
+                                    <div class="card mb-2 product shopallproduct homeproducts">
+                                        <div class="newitemimgdiv">
+                                                <img class="newitemimg" src="Assets/Images/evlbcaa.jpg" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="itemdescr">BCAA Energy<br>(Cherry Limeade, 30 servs)</div><p>Evolution Nutrition</p>
+                                                <p class="newitemprice">LKR 4500</p>
+                                            </div>
+                                      </div>
+                                </td>
+                            </table>
+                        </div>
+                        <div class="carousel-item homecarouselitem">
+                            <table class="newitemstable homeitems" id="getallitemstable">
+                                <td>
+                                    <div class="card mb-2 product shopallproduct homeproducts">
+                                        <div class="newitemimgdiv">
+                                                <img class="newitemimg" src="Assets/Images/dymatizewp.jpg" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="itemdescr">ISO100 Hydrolyzed Whey Protein<br>(Chocolate Coconut, 72 servs)</div><p>Dymatize</p>
+                                              <p class="newitemprice">LKR 15500</p>
+                                            </div>
+                                      </div>
+                                </td>
+                            </table>
+                        </div>
+                        <div class="carousel-item homecarouselitem">
+                            <table class="newitemstable homeitems" id="getallitemstable">
+                                <td>
+                                    <div class="card mb-2 product shopallproduct homeproducts">
+                                        <div class="newitemimgdiv">
+                                                <img class="newitemimg" src="Assets/Images/nitrox.jpg" alt="Card image cap">
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="itemdescr">Mr. Hyde NitroX<br>(Blue Razz Popsicle, 30 servs)</div><p>Pro Supps</p>
+                                              <p class="newitemprice">LKR 6500</p>
+                                            </div>
+                                      </div>
+                                </td>
+                            </table>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div class="gotostorediv">
+                    <a class="gotostore" href="CustomerProduct">GO TO STORE</a>
+                </div>
             </div><br><br>
         </div>
         
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-             <img height="75" src="Assets/Images/fitlogo2.png">
-             <p class="h6 footertext"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Copyright © 2020 <i>FIT.com</i>. All rights reserved.</strong><br>Isurupaya, Battaramulla - Pannipitiya Rd, Battaramulla 10120</p>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark footernav">
+             <img class="footerimg" height="75px" src="Assets/Images/fitlogo2.png">
+             <p class="h6 footertext"><strong>Copyright © 2020 <i>FIT.com</i>. All rights reserved.</strong></p>
         </nav>
     </body>
 </html>
