@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import Model.DAO;
+import static java.lang.ProcessBuilder.Redirect.to;
 
 public class Register extends HttpServlet 
 {
@@ -54,7 +55,7 @@ public class Register extends HttpServlet
             String emailmsg = checkEmail(email);
             if (emailmsg!=null)
             {
-                request.setAttribute("emailmessage", emailmsg);
+                request.setAttribute("message", emailmsg);
                 request.getRequestDispatcher("register.jsp").include(request, response);
             }
             else
@@ -64,12 +65,17 @@ public class Register extends HttpServlet
                     //Customer theTrainee = new Customer(email, fname, lname, gender, cpwd, num, brthld, age, h, w, bmi);
                     Customer theTrainee = new Customer(email, fname, lname, gender, cpwd, num, brthld, age);
                     dao.registerCustomer(theTrainee);
+                    
+                    /*String sSubject = "SUCCESSFULLY REGISTERED!";
+                    String sBody = "Welcome to FIT.com";
+                    SendEmail.send(email,sSubject, sBody);*/
+                    
                     request.setAttribute("registermessage", "Welcome to the FIT famiy. You may proceed to login.");
-                    request.getRequestDispatcher("index.jsp").include(request, response);
+                    request.getRequestDispatcher("login.jsp").include(request, response);
                 }
                 else
                 {
-                    request.setAttribute("pwdmessage", message);
+                    request.setAttribute("message", message);
                     request.getRequestDispatcher("register.jsp").include(request, response);
                 }
             }
@@ -86,9 +92,9 @@ public class Register extends HttpServlet
         
         if (pwd.equals(cpwd))
         {
-            if (pwd.length()<6)
+            if (pwd.length()<8)
             {
-                message = "Password is required to be at least 6 characters long";
+                message = "Password is required to be at least 8 characters long";
                 return message;
             }
             else
@@ -101,6 +107,11 @@ public class Register extends HttpServlet
                 else if (!hasLowercase)
                 {
                     message = "Password is required to have lowercase letter(s)";
+                    return message;
+                }
+                else if (!pwd.matches(".*\\d.*"))
+                {
+                    message = "Password is required to have one or more numbers";
                     return message;
                 }
                 else

@@ -9,7 +9,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>FIT.com - My Profile</title>
         <script src="Styling/jquery.min.js"></script>
         <script src="Styling/mdb.js"></script>
@@ -17,243 +18,226 @@
         <script src="Styling/bootstrap.min.js"></script>
         <link rel="stylesheet" href="Styling/bootstrap.min.css">
         <link rel="icon" type="image/ico" href="Assets/Images/fitlogo.png"/>
+        <script>
+            function openCartNav() {
+              document.getElementById("myCartSidenav").style.width = "300px";
+            }
+
+            function closeCartNav() {
+              document.getElementById("myCartSidenav").style.width = "0";
+            }
+        </script>
     </head>
-    <body style="overflow-y: scroll;">
-        <div class="modal fade" id="updateContactModal" tabindex="-1" role="dialog" aria-labelledby="updateProdModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content updateprodmodal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 230px;">Update Contact Number</h5>
-                  <button type="button" class="close reglogclose" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-footer">
-                    <form method="GET" action="EditProfile">
-                        <input name="command" type="hidden" value="UPDC">
-                        <table style="margin-left: -50px;">
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="updateContact" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" maxlength="12" placeholder="+94771234535">
-                                </td>
-                                <td>
-                                    <button id="updatestockbtn" style="margin-top: -10px;margin-left: 15px;" class="btn btn-dark" type="submit">Update</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-               </div>
-              </div>
-            </div>
-          </div>
+    <body>
+        <div style="background-color: #333333;text-align: center;">
+            <c:if test="${empty requestScope.registermessage}">
+                <label style="color: #ff0b0b;font-weight: bold;">${requestScope.loginmessage}</label>
+            </c:if>
+            <c:if test="${not empty requestScope.registermessage}">
+                <label style="color: #ff0b0b;font-weight: bold;">${requestScope.registermessage}</label>
+            </c:if>
+        </div>
         
-        <div class="modal fade" id="addAddressModal" tabindex="-1" role="dialog" aria-labelledby="updateProdModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content updateprodmodal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 275px;">Add Address</h5>
-                  <button type="button" class="close reglogclose" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-footer">
-                    <form method="GET" action="CustomerAddress">
-                        <input name="command" type="hidden" value="ADDA">
-                        <table style="margin-right: 80px;">
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="address" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Address">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="city" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="City">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="province" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Province">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="postal" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" pattern="[0-9]*" minlength="5" maxlength="5" placeholder="ZIP Code">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button id="updatestockbtn" style="margin-left: 140px;" class="btn btn-dark" type="submit">Add Address</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-               </div>
-              </div>
-            </div>
-          </div>
-        
-        <div class="modal fade" id="addCardModal" tabindex="-1" role="dialog" aria-labelledby="updateProdModal" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content updateprodmodal">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 275px;">Add Card</h5>
-                  <button type="button" class="close reglogclose" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-footer">
-                    <form method="GET" action="CustomerCard">
-                        <input name="command" type="hidden" value="ADDC">
-                        <table style="margin-right: 80px;">
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="name" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Name on Card">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="number" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Card Number" pattern="[0-9]*" minlength="16" maxlength="16">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input style="width: 125px !important;" class="form-control2 fc2addp" name="month" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Month (Eg:02)" pattern="[0-9]*" minlength="2" maxlength="2">
-                                </td>
-                                <td>
-                                    <input style="width: 125px !important;margin-left: -127px;" class="form-control2 fc2addp" name="year" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Year (Eg:24)" pattern="[0-9]*" minlength="2" maxlength="2">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input class="form-control2 fc2addp" name="cvv" type="text" id="exampleInputEmail1" aria-describedby="emailHelp" pattern="[0-9]*" minlength="3" maxlength="3" placeholder="CVV">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <button id="updatestockbtn" style="margin-left: 140px;" class="btn btn-dark" type="submit">Add Card</button>
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-               </div>
-              </div>
-            </div>
-          </div>
-        
-        
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-dark bg-dark custoomnav">
              <a class="navbar-brand" href="index.jsp"><img class="headerimg" height="100px" src="Assets/Images/fitlogo2.png"></a>
-             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="index.jsp">Home</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="about.jsp">About Us <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="routines.jsp">Routines <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="CustomerProduct">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="contact.jsp">Contact Us</a>
-                    </li>
-                </ul>
-                 <div class="headeraccount">
-                      <c:if test="${not empty email}">
-                        <a id="dLabel" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <img class="headerbtn" src="Assets/Images/account.png" height="40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </a>
-                        <div class="dropdown-menu loggedindmenu" aria-labelledby="dLabel">
-                            <button class="viewprof"><a href="profile.jsp">Go to Profile</a></button>
-                            <div class="dropdown-divider"></div>
-                            <button class="dropdown-item logsignup"><a href="Logout">Logout</a></button>   
-                        </div>
-                     </c:if>
-                     <c:if test="${empty email}">
-                        <a id="accountd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <img class="headerbtn" src="Assets/Images/account.png" height="40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </a>
-                        <div class="dropdown-menu reglogdmenu" aria-labelledby="accountd">
-                            <form class="px-4 py-3" action="Login" method="POST">
-                             <div class="form-group">
-                                 <label class="accmodallbl" for="exampleDropdownFormEmail1">Email address</label>
-                               <input type="email" name="mail" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-                             </div>
-                             <div class="form-group">
-                               <label class="accmodallbl" for="exampleDropdownFormPassword1">Password</label>
-                               <input type="password" name="pwd" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-                             </div>
-                             <button type="submit" class="btn btn-primary">Sign in</button>
-                           </form>
-                           <div class="dropdown-divider"></div>
-                           <button class="dropdown-item logsignup"><a href="register.jsp">New around here? Sign up</a></button>   
-                         </div>
-                     </c:if>
-                 </div>
-                 <div class="headercart">
-                     <c:if test="${empty email}">
-                        <a id="cartd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                           <img class="headerbtn" src="Assets/Images/cart.png" height="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        </a>
-                        <div class="dropdown-menu emptycartdmenu" aria-labelledby="emptycartd">
-                            <p class="cartisempty">Log in to shop</p>  
-                        </div>
-                     </c:if>
-                      <c:if test="${not empty email}">
-                          <c:if test="${not empty cart}">
-                                <a id="cartd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  <img class="headerbtn" src="Assets/Images/cart.png" height="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                               </a>
-                               <div class="dropdown-menu cartdmenu" aria-labelledby="emptycartd">
-                                   <c:set var="total" value="0"></c:set>
-                                   <c:set var="totalqty" value="0"></c:set>
-                                    <c:forEach var="item" items="${sessionScope.cart}">
-                                        <c:set var="total" value="${total + item.getProduct().getProductPrice() * item.getQuantity()}"></c:set>
-                                        <c:set var="totalqty" value="${totalqty + item.getQuantity()}"></c:set>
-                                        <form class="checkoutcartform" method="GET" action="CustomerCart">
-                                            <input name="itemID" type="hidden" value="${item.getProduct().getProductID()}">
-                                            <input name="command" type="hidden" value="REMOVEC">
-                                            <input name="url" type="hidden" value="index.jsp">
-                                            <table class="eachitemtable">
-                                                <tr>
-                                                    <td>
-                                                        ${item.getProduct().getProductName()}
-                                                        <button type="submit" class="btn nav-link removeitembtn">X</button>
-                                                        <p class="itemqty">Quantity: ${item.getQuantity()}</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="itemprice">${item.getProduct().getProductPrice() * item.getQuantity()}</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
-                                        </form>
-                                    </c:forEach><br>
-                                    <p class="carttotal">Total: ${total}</p>
-                                   <a href="checkout.jsp" class="checkoutcartbtn">Checkout</a>
-                               </div>
-                               <label class="cartqty">${totalqty}</label>
-                          </c:if>
-                          <c:if test="${empty cart}">
-                              <a id="cartd" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="headerbtn" src="Assets/Images/cart.png" height="35">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                             </a>
-                             <div class="dropdown-menu emptycartdmenu" aria-labelledby="emptycartd">
-                                 <p>&nbsp;&nbsp;&nbsp;Cart is empty</p>
-                                 <button disabled type="submit" class="discheckoutcartbtn">Checkout</button>
-                             </div>
-                           <label class="cartqty">0</label>
-                          </c:if>
-                     </c:if>
-                 </div>
+             <div>
+                <table class="navbar-nav mr-auto navnormal">
+                    <tr>
+                        <td class="nav-item">
+                            <a class="nav-link custoomnavitem" href="index.jsp">Home</a>
+                        </td>
+                        <td class="nav-item">
+                          <a class="nav-link custoomnavitem" href="routines.jsp">Routines</a>
+                        </td>
+                        <td class="nav-item">
+                          <a class="nav-link custoomnavitem" href="CustomerProduct">Shop</a>
+                        </td>
+                        <td class="nav-item">
+                          <a class="nav-link custoomnavitem" href="delivery.jsp">Delivery & Shipping</a>
+                        </td>
+                        <td class="nav-item">
+                          <a class="nav-link custoomnavitem" href="contact.jsp">Contact Us</a>
+                        </td>
+                        <c:if test="${not empty email}">
+                            <td class="nav-item active">
+                                <a class="nav-link custoomnavitem" href="profile.jsp">My Profile</a>
+                            </td>
+                        </c:if>
+                    </tr>
+                </table>
+                 
+                 <table class="navacccrt">
+                     <tr>
+                        <td>
+                            <div class="headeraccount">
+                               <c:if test="${empty email}">
+                                   <a href="login.jsp"><button style="margin-right: 10px;" class="btn btn-outline-success my-2 my-sm-0 navloginbtn">Login</button></a>
+                               </c:if>
+                                 <c:if test="${not empty email}">
+                                     <c:if test="${not empty cart}">
+                                          <c:set var="total" value="0"></c:set>
+                                          <c:set var="totalqty" value="0"></c:set>
+                                          <c:forEach var="item" items="${sessionScope.cart}">
+                                            <c:set var="total" value="${total + item.getProduct().getProductPrice() * item.getQuantity()}"></c:set>
+                                            <c:set var="totalqty" value="${totalqty + item.getQuantity()}"></c:set>
+                                          </c:forEach>
+                                           <a id="cartd" onclick="openCartNav()" aria-haspopup="true" aria-expanded="false">
+                                             <img class="headerbtn" src="Assets/Images/cart.png" height="35">
+                                             <label class="cartqty">${totalqty}</label>
+                                          </a>
+                                     </c:if>
+                                     <c:if test="${empty cart}">
+                                         <a id="cartd" onclick="openCartNav()" aria-haspopup="true" aria-expanded="false">
+                                           <img class="headerbtn" src="Assets/Images/cart.png" height="35">
+                                           <label class="cartqty">0</label>
+                                        </a>
+                                     </c:if>
+                                </c:if>
+                           </div>
+                        </td>
+                        
+                        <td>
+                            <div class="headercart">
+                                <c:if test="${empty email}">
+                                   <a href="register.jsp"><button class="btn btn-outline-success my-2 my-sm-0 navregisterbtn">Sign Up</button></a>
+                                </c:if>
+                                <c:if test="${not empty email}">
+                                  <a href="Logout"><button class="btn btn-outline-success my-2 my-sm-0 navregisterbtn">Logout</button></a>
+                               </c:if>
+                            </div>
+                        </td>
+                    </tr>
+                 </table>
              </div>
         </nav>
         
         
-        <div style="padding: 10px;background-color: white;min-height: 475px;color: black;">
+        <c:if test="${empty sessionScope.email}">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mobilenav">
+                 <a class="navbar-brand" href="index.jsp"><img class="headerimg" height="100px" src="Assets/Images/fitlogo2.png"></a>
+                 <table class="navtable">
+                     <tr>
+                         <td>
+                            <a href="login.jsp"><button class="btn btn-outline-success my-2 my-sm-0 navloginbtn">Login</button></a>
+                         </td>
+                         <td>
+                            <a href="register.jsp"><button class="btn btn-outline-success my-2 my-sm-0 navregisterbtn">Sign Up</button></a>
+                         </td>
+                         <td>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                         </td>
+                     </tr>
+                 </table>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.jsp">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="routines.jsp">Routines</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="CustomerProduct">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link custoomnavitem" href="delivery.jsp">Delivery & Shipping</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="contact.jsp">Contact Us</a>
+                        </li>
+                    </ul>
+                 </div>
+            </nav>
+        </c:if>
+        
+        <c:if test="${not empty sessionScope.email}">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark mobilenav">
+                 <a class="navbar-brand" href="index.jsp"><img class="headerimg" height="100px" src="Assets/Images/fitlogo2.png"></a>
+                 <table class="navtable">
+                     <tr>
+                         <td>
+                            <c:set var="total" value="0"></c:set>
+                            <c:set var="totalqty" value="0"></c:set>
+                            <c:forEach var="item" items="${sessionScope.cart}">
+                              <c:set var="total" value="${total + item.getProduct().getProductPrice() * item.getQuantity()}"></c:set>
+                              <c:set var="totalqty" value="${totalqty + item.getQuantity()}"></c:set>
+                            </c:forEach>
+                            <a id="cartd" onclick="openCartNav()" aria-haspopup="true" aria-expanded="false">
+                               <img class="headerbtn" src="Assets/Images/cart.png" height="27">
+                               <label class="cartqtymobile">${totalqty}</label>
+                            </a>
+                         </td>
+                         <td>
+                            <a href="Logout"><button class="btn btn-outline-success my-2 my-sm-0 navregisterbtn">Logout</button></a>
+                         </td>
+                         <td>
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                         </td>
+                     </tr>
+                 </table>
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.jsp">Home</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="routines.jsp">Routines</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="CustomerProduct">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link custoomnavitem" href="delivery.jsp">Delivery & Shipping</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" href="contact.jsp">Contact Us</a>
+                        </li>
+                        <li class="nav-item active">
+                          <a class="nav-link" href="profile.jsp">My Profile</a>
+                        </li>
+                    </ul>
+                 </div>
+            </nav>
+        </c:if>
+        
+        <div style="padding: 10px;background-color: white;min-height: 475px;color: black;position: relative;">
+            <div id="myCartSidenav" class="sidenav notshopnav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeCartNav()">&times;</a>
+                <c:if test="${not empty cart}">
+                    <a href="checkout.jsp" class="checkoutcartbtn">Checkout</a>
+                    <br><p style="color: white;font-size: 20px;text-align: center;">Your Cart</p>
+                    <p class="carttotal">Total: ${total}</p>
+                    <div class="cartitems">
+                        <c:set var="total" value="0"></c:set>
+                        <c:set var="totalqty" value="0"></c:set>
+                        <c:forEach var="item" items="${sessionScope.cart}">
+                            <c:set var="total" value="${total + item.getProduct().getProductPrice() * item.getQuantity()}"></c:set>
+                            <c:set var="totalqty" value="${totalqty + item.getQuantity()}"></c:set>
+                            <form class="checkoutcartform" method="GET" action="CustomerCart">
+                                <input name="itemID" type="hidden" value="${item.getProduct().getProductID()}">
+                                <input name="command" type="hidden" value="REMOVEC">
+                                <input name="url" type="hidden" value="index.jsp">
+                                <table class="eachitemtable">
+                                    <tr>
+                                        <td>
+                                            <p class="itemname">${item.getProduct().getProductName()}</p>
+                                            <p class="itemqty">Quantity: ${item.getQuantity()}</p>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn nav-link removeitembtn">X</button>
+                                            <p class="itemprice">${item.getProduct().getProductPrice() * item.getQuantity()}</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </form>
+                        </c:forEach><br>
+                    </div>
+             </c:if>
+             <c:if test="${empty cart}">
+                 <br><p style="margin-left: 30px;color: white;">Cart is empty</p>
+             </c:if>
+            </div>
+        
                 <div class="myaccountdiv">
                     <div class="personalinfodiv">
                         <label class="profilehead"><img style="margin-bottom: 5px;" height="55" src="Assets/Images/personaldetails.png">&nbsp;Personal Information</label>
@@ -334,5 +318,10 @@
                     </c:if>
                 </div>
             </div>
+        
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark footernav tabletmobilefn">
+             <img class="footerimg" height="75px" src="Assets/Images/fitlogo2.png">
+             <p class="h6 footertext"><strong>Copyright © 2020 <i>FIT.com</i>. All rights reserved.</strong></p>
+        </nav>
     </body>
 </html>

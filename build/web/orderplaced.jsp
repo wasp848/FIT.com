@@ -14,7 +14,9 @@
         <title>Order Placed!</title>
     </head>
     <body style="background-color: #333333">
-        <p class="orderplaced">Thanks for shopping with us! You will receive your order within 5-7 working days</p>
-        <a class="backtohomelink" href="index.jsp">Back to home</a>
+        <div style="position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);">
+            <p class="orderplaced">Thanks for shopping with us! You will receive your order within 5-7 working days</p>
+            <a class="backtohomelink" href="index.jsp">Back to home</a>
+        </div>
     </body>
 </html>

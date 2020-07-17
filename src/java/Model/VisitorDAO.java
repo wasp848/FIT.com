@@ -36,15 +36,15 @@ public class VisitorDAO implements DAO
             String PWD = rs.getString("password");
             String TYPE = rs.getString("type");
             
-            if (email.equals(MAIL) && password.equals(PWD) && TYPE.equals("Customer"))
+            if (email.equalsIgnoreCase(MAIL) && password.equals(PWD) && TYPE.equals("Customer"))
             {
                 return "Customer";
             }
-            else if (email.equals(MAIL) && password.equals(PWD) && TYPE.equals("Trainer"))
+            else if (email.equalsIgnoreCase(MAIL) && password.equals(PWD) && TYPE.equals("Trainer"))
             {
                 return "Trainer";
             }
-            else if (email.equals(MAIL) && password.equals(PWD) && TYPE.equals("Admin"))
+            else if (email.equalsIgnoreCase(MAIL) && password.equals(PWD) && TYPE.equals("Admin"))
             {
                 return "Admin";
             }
@@ -173,7 +173,7 @@ public class VisitorDAO implements DAO
             ps1 = connection.prepareStatement("INSERT INTO user(email, password, type)"
                     + " VALUES(?,?,?)");
             
-            ps.setString(1, theCustomer.getEmail());
+            ps.setString(1, theCustomer.getEmail().toLowerCase());
             ps.setString(2, theCustomer.getFirstName());
             ps.setString(3, theCustomer.getLastName());
             ps.setString(4, theCustomer.getGender());
