@@ -7,102 +7,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Checkout</title>
+ 
         <script src="Styling/jquery.min.js"></script>
-        <script src="Styling/mdb.js"></script>
-        <link rel="stylesheet" href="Styling/mdb.css">
-        <script src="Styling/popper.min.js"></script>
-        <script src="Styling/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="Styling/bootstrap.min.css">
-        <link rel="icon" type="image/ico" href="Assets/Images/fitlogo.png"/>
-        <script>
-            function checkExAddr(){
-               document.getElementById("newaddr").disabled = true;
-               document.getElementById("newaddr1").disabled = true;
-               document.getElementById("newaddr2").disabled = true;
-               document.getElementById("newaddr3").disabled = true;
-               document.getElementById("exaddr1").disabled = false;
-               document.getElementById("exaddr2").disabled = false;
-            }
-            function checkOtherAddr(){
-               document.getElementById("newaddr").disabled = false;
-               document.getElementById("newaddr1").disabled = false;
-               document.getElementById("newaddr2").disabled = false;
-               document.getElementById("newaddr3").disabled = false;
-               document.getElementById("exaddr1").disabled = true;
-               document.getElementById("exaddr2").disabled = true;
-            }
-            function checkExCrd(){
-               document.getElementById("newcrd").disabled = true;
-               document.getElementById("newcrd1").disabled = true;
-               document.getElementById("newcrd2").disabled = true;
-               document.getElementById("newcrd3").disabled = true;
-               document.getElementById("excrd1").disabled = false;
-               document.getElementById("excrd2").disabled = false;
-            }
-            function checkOtherCrd(){
-               document.getElementById("newcrd").disabled = false;
-               document.getElementById("newcrd1").disabled = false;
-               document.getElementById("newcrd2").disabled = false;
-               document.getElementById("newcrd3").disabled = false;
-               document.getElementById("excrd1").disabled = true;
-               document.getElementById("excrd2").disabled = true;
-            }
-            function checkCOD(){
-               document.getElementById("newcrd").disabled = true;
-               document.getElementById("newcrd1").disabled = true;
-               document.getElementById("newcrd2").disabled = true;
-               document.getElementById("newcrd3").disabled = true;
-               document.getElementById("excrd1").disabled = true;
-               document.getElementById("excrd2").disabled = true;
-            }
-            
-            document.getElementById("checkExAddr").onfocus = function() {myFunction();};
-            document.getElementById("checkOtherAddr").onfocus = function() {myFunction1();};
-            document.getElementById("checkExCrd").onfocus = function() {myFunction2();};
-            document.getElementById("checkOtherCrd").onfocus = function() {myFunction3();};
-            document.getElementById("checkCOD").onfocus = function() {myFunction4();};
+       <script src="Styling/popper.min.js"></script>
+           <script src="Styling/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="Styling/bootstrap.min.css">
+        <link rel="stylesheet" href="Styling/style.css">
 
-            function myFunction(){
-               document.getElementById("newaddr").disabled = true;
-               document.getElementById("newaddr1").disabled = true;
-               document.getElementById("newaddr2").disabled = true;
-               document.getElementById("newaddr3").disabled = true;
-               document.getElementById("exaddr1").disabled = false;
-               document.getElementById("exaddr2").disabled = false;
-            }
-            function myFunction1(){
-               document.getElementById("newaddr").disabled = false;
-               document.getElementById("newaddr1").disabled = false;
-               document.getElementById("newaddr2").disabled = false;
-               document.getElementById("newaddr3").disabled = false;
-               document.getElementById("exaddr1").disabled = true;
-               document.getElementById("exaddr2").disabled = true;
-            }
-            function myFunction2(){
-               document.getElementById("newcrd").disabled = true;
-               document.getElementById("newcrd1").disabled = true;
-               document.getElementById("newcrd2").disabled = true;
-               document.getElementById("newcrd3").disabled = true;
-               document.getElementById("excrd1").disabled = false;
-               document.getElementById("excrd2").disabled = false;
-            }
-            function myFunction3(){
-               document.getElementById("newcrd").disabled = false;
-               document.getElementById("newcrd1").disabled = false;
-               document.getElementById("newcrd2").disabled = false;
-               document.getElementById("newcrd3").disabled = false;
-               document.getElementById("excrd1").disabled = true;
-               document.getElementById("excrd2").disabled = true;
-            }
-            function myFunction4(){
-               document.getElementById("newcrd").disabled = true;
-               document.getElementById("newcrd1").disabled = true;
-               document.getElementById("newcrd2").disabled = true;
-               document.getElementById("newcrd3").disabled = true;
-               document.getElementById("excrd1").disabled = true;
-               document.getElementById("excrd2").disabled = true;
-            }
-        </script>
+        <link rel="icon" type="image/ico" href="Assets/Images/fitlogo.png"/>
+     
     </head>
     <body style="background-color: white;">
         <div class="checkoutnav chckoutpcnav">
@@ -166,13 +79,13 @@
                         <div class="chckoutaddressdiv">
                             <p class="chckoutorderreview">SHIPPING DETAILS</p>
                             <c:if test = "${sessionScope.addresses.size() != 0}">
-                                <input required onclick="checkExAddr()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="address" value="exaddress"> Use existing address<br>
+                                <input required id="checkExAddr" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="address" value="exaddress"> Use existing address<br>
                                 <c:set var="index1" value="${0}"></c:set>
                                 <c:forEach items="${sessionScope.addresses}">
                                     <input id="exaddr${index1 + 1}" style="margin-left: 60px;" type="radio" name="addr" value="${sessionScope.addresses[index1]}" required> ${sessionScope.addresses[index1]}<br>
                                     <c:set var="index1" value="${index1 + 1}"></c:set>
                                 </c:forEach><br>
-                                    <input required onclick="checkOtherAddr()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="address" value="newaddress"> Use different address
+                                    <input required  id="checkOtherAddr" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="address" value="newaddress"> Use different address
                                     <div id="chckoutnewaddressdiv" class="chckoutnewaddressdiv">
                                         <input style="margin-bottom: 5px;" id="newaddr" class="form-control" name="addresss" type="text" placeholder="Address" required> 
                                         <input style="margin-bottom: 5px;" id="newaddr1" class="form-control" name="city" type="text" placeholder="City" required> 
@@ -182,7 +95,7 @@
                             </c:if>
                             <c:if test = "${sessionScope.addresses.size() == 0}">
                                 <p style="margin-left: 30px;" class="mutedlbl">You have not saved any addresses</p>
-                                <input required checked onclick="checkOtherAddr()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="address" value="newaddress" required> Use different address
+                                <input required checked id="checkOtherAddr" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="address" value="newaddress" required> Use different address
                                 <div id="chckoutnewaddressdiv" class="chckoutnewaddressdiv">
                                     <input style="margin-bottom: 5px;" id="newaddr" class="form-control" name="addresss" type="text" placeholder="Address" required> 
                                     <input style="margin-bottom: 5px;" id="newaddr1" class="form-control" name="city" type="text" placeholder="City" required> 
@@ -198,31 +111,31 @@
                         <div class="chckoutpaymentdiv">
                             <p class="chckoutorderreview">PAYMENT DETAILS</p>
                             <c:if test = "${sessionScope.cards.size() != 0}">
-                                <input required onclick="checkExCrd()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="existingcard"> Use existing card<br>
+                                <input required id="checkExCrd" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="existingcard"> Use existing card<br>
                                 <c:set var="index1" value="${0}"></c:set>
                                 <c:forEach items="${sessionScope.cards}">
                                     <input id="excrd${index1 + 1}" style="margin-left: 60px;" type="radio" name="crd" value="${sessionScope.cards[index1].getCardNumber()}" required> ${sessionScope.cards[index1].getCardNumber()}<br>
                                     <c:set var="index1" value="${index1 + 1}"></c:set>
                                 </c:forEach><br>
-                                <input required onclick="checkOtherCrd()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="newcard"> Use different card
+                                <input required  id="checkOtherCrd" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="newcard"> Use different card
                                 <div id="chckoutnewaddressdiv" class="chckoutnewaddressdiv">
                                     <input style="margin-bottom: 5px;" id="newcrd" class="form-control" name="name" type="text" placeholder="KA Fazal" required> 
                                     <input style="margin-bottom: 5px;" id="newcrd1" class="form-control" name="number" type="text" placeholder="1234123412341234" required> 
                                     <input style="margin-bottom: 5px;" id="newcrd2" class="form-control" name="expiry" type="text" placeholder="10/24" required> 
                                     <input style="margin-bottom: 15px;" id="newcrd3" class="form-control" name="cvv" type="text" placeholder="123" required> 
                                 </div>
-                                <input required onclick="checkCOD()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="cod"> Cash on Delivery<br>
+                                <input required  id="checkCOD" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="cod"> Cash on Delivery<br>
                             </c:if>
                             <c:if test = "${sessionScope.cards.size() == 0}">
                                 <p style="margin-left: 30px;" class="mutedlbl">You have not saved any cards</p>
-                                <input required onclick="checkOtherCrd()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="newcard"> Use different card
+                                <input required id="checkOtherCrd" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="newcard"> Use different card
                                 <div id="chckoutnewaddressdiv" class="chckoutnewaddressdiv">
                                     <input style="margin-bottom: 5px;" id="newcrd" class="form-control" name="name" type="text" placeholder="KA Fazal" required> 
                                     <input style="margin-bottom: 5px;" id="newcrd1" class="form-control" name="number" type="text" placeholder="1234123412341234" required> 
                                     <input style="margin-bottom: 5px;" id="newcrd2" class="form-control" name="expiry" type="text" placeholder="10/24" required> 
                                     <input style="margin-bottom: 15px;" id="newcrd3" class="form-control" name="cvv" type="text" placeholder="123" required> 
                                 </div>
-                                <input required onclick="checkCOD()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="cod"> Cash on Delivery<br>
+                                <input required id="checkCOD" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="cod"> Cash on Delivery<br>
                             </c:if>
                         </div>
                     </td>
@@ -330,7 +243,7 @@
                             <input style="margin-bottom: 5px;" id="newcrd2" class="form-control mobilechckoutfc" name="expiry" type="text" placeholder="10/24" required> 
                             <input style="margin-bottom: 15px;" id="newcrd3" class="form-control mobilechckoutfc" name="cvv" type="text" placeholder="123" required> 
                         </div>
-                        <input required onclick="checkCOD()" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="cod"> Cash on Delivery<br>
+                        <input required id="checkCOD" style="margin-left: 30px;margin-bottom: 15px;" type="radio" name="card" value="cod"> Cash on Delivery<br>
                     </c:if>
                     <c:if test = "${sessionScope.cards.size() == 0}">
                         <p style="margin-left: 30px;" class="mutedlbl">You have not saved any cards</p>
@@ -349,5 +262,7 @@
                 <button type="submit" class="btn registerbtn placeorderbtn">PLACE ORDER</button>
             </form>
         </div>
+
+        <script src="Test.js"></script>
     </body>
 </html>
